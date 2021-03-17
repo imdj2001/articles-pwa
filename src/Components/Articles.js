@@ -25,7 +25,7 @@ function Articles() {
   const [articles, setArticles] = useState([]);
   const fetchData = async () => {
     const response = await axios.get(
-      `https://gnews.io/api/v4/top-headlines?lang=${lang}&token=77d12af901964fc19eef448177e3abed`
+      `https://gnews.io/api/v4/top-headlines?lang=${lang}&token=6fe76c3950a7f65897cb640c1fe4c265`
     );
     setArticles(response.data.articles);
   };
@@ -39,20 +39,18 @@ function Articles() {
 
   return (
     <>
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Navbar bg="dark" variant="dark" style={{display:"flex" , justifyContent:"space-between"}}>
         <Navbar.Brand href="#home">ARTICLES-PWA</Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="mr-auto">
-            <Nav.Link onClick={() => language("en")}>English</Nav.Link>
-            <Nav.Link onClick={() => language("hi")}>हिन्दी</Nav.Link>
-            <Nav.Link onClick={() => language("te")}>తెలుగు</Nav.Link>
-            <Nav.Link onClick={() => language("ta")}>தமிழ்</Nav.Link>
-            <Nav.Link onClick={() => language("mr")}>मराठी</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
+          <NavDropdown title="Languages" className="drpdwn">
+        <NavDropdown.Item onClick={() => language("en")} >English</NavDropdown.Item>
+        <NavDropdown.Item onClick={() => language("hi")} >हिन्दी</NavDropdown.Item>
+        <NavDropdown.Item onClick={() => language("te")} >తెలుగు</NavDropdown.Item>
+        <NavDropdown.Item onClick={() => language("ta")} >தமிழ்</NavDropdown.Item>
+        <NavDropdown.Item onClick={() => language("mr")} >मराठी</NavDropdown.Item>
+      </NavDropdown>
+      
       </Navbar>
-      <div className="container">
+      <div className="container__art">
         <div style={{height:"20px"}}></div>
         {articles.length &&
           articles.map((art) => {
