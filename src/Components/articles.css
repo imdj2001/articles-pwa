@@ -7,3 +7,21 @@ width: 10vw;
 {
   color:white;  
 }
+
+
+
+.click__here
+{
+  height: 200px;
+  margin-left: 14vw;
+  align-items: center;
+}
+
+@media only screen and (max-width:768px)
+{
+  .click__here
+  {
+    height:150px;
+    margin-left: 23vw;
+  }
+}
